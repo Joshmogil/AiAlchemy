@@ -31,14 +31,12 @@ pip install ai_alchemy
 Here's a basic example of how to use AI Alchemy:
 
 ```python
-# Import necessary libraries
-import os
-import ai_alchemy
-from ai_alchemy.ai import OpenAIWrapper
+import ai_alchemy.core.ai as ai
+import ai_alchemy.core.cast as cast
 from pydantic import BaseModel
+import os
 
-# Instantiate a wrapper for an AI model
-openai = OpenAIWrapper(api_key=os.environ["OPENAI_API_KEY"], model="gpt-3.5-turbo")
+openai = ai.OpenAIWrapper(api_key=os.environ["OPENAI_API_KEY"], model="gpt-3.5-turbo")
 
 # Define a Pydantic model
 class User(BaseModel):
@@ -47,6 +45,9 @@ class User(BaseModel):
 
 # Input data
 data = "John Smith is 25 years old, five foot ten inches tall, and weighs 150 pounds."
+
+# Use AI Alchemy to transform the data into a Pydantic model
+model = cast.str_to_pydantic_model(data, openai, User)
 
 # Use AI Alchemy to transform the data into a Pydantic model
 model = ai_alchemy.cast.str_to_pydantic_model(data, openai, User)
