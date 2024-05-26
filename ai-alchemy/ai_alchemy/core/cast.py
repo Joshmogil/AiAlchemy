@@ -7,18 +7,16 @@ from ai_alchemy.core.ai import AiWrapper
 
 
 def dict_to_pydantic_model(input: dict, ai: AiWrapper, output: BaseModel):
-    prompt = [
+    base_prompt = [
         "Given the following Pydantic schema and input dictionary, your task is to transform the dictionary into a JSON object. The JSON object should match the Pydantic schema exactly, and should not include the schema itself.",
         "Pydantic schema:",
-        f"{output.schema_json()}",
+        f"{output.model_json_schema()}",
         "Input dictionary:",
         f"{input}",
         "Please provide the transformed JSON object."
     ]
         
-    joined_prompt="\n".join(prompt)
-    print(joined_prompt)
-    print("_----")
+    joined_prompt="\n".join(base_prompt)
     final=""
     for out in ai.call("\n".join(joined_prompt)):
         print(out)
