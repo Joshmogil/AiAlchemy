@@ -1,6 +1,7 @@
 # AI Alchemy
 
-AI Alchemy is a Python library that provides a convenient way to interact with AI models, such as OpenAI's GPT-3.5 Turbo, and perform transformations on data.
+AI Alchemy is a Python library that provides a convenient way to interact with AI models to perform data transformations and validation using the standard library and gold star libraries like Pydantic and Pandas.
+
 
 ## Getting Started
 
