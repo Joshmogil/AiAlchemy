@@ -1,6 +1,6 @@
-# AI Alchemy
+# AIAlchemy
 
-AI Alchemy is a Python library that provides a convenient way to interact with AI models to perform data transformations and validation using the standard library and gold star libraries like Pydantic and Pandas.
+AIAlchemy is a Python library that provides a convenient way to interact with AI models to perform data transformations and validation using the standard library and gold star libraries like Pydantic and Pandas.
 
 
 ## Getting Started
