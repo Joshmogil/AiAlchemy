@@ -1,9 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABC 
+from abc import abstractmethod
 from openai import OpenAI
 from typing import Generator
 
 class AiWrapper(ABC):
-
+    
     @abstractmethod
     def call(self, input: str, **kwargs) -> Generator[str, None, None]:
         """
@@ -15,11 +16,11 @@ class AiWrapper(ABC):
 
 class OpenAIWrapper(AiWrapper):
     # overriding abstract method
-    def __init__(self, api_key: str) -> None:
+    def __init__(self, api_key: str, model: str = "gpt-3.5-turbo") -> None:
         self.api_key = api_key
         self.client = OpenAI()
         self.client.api_key = api_key
-        self.model = "gpt-3.5-turbo"
+        self.model = model
 
     def call(self, input:str) -> Generator[str, None, None]: # type: ignore
         client = OpenAI()

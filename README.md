@@ -9,7 +9,7 @@ It is initially focused on 3 key transformations:
 
 This allows stepwise transformations that can be lego'd together with validation every step of the way, as well as easy integration into existing programs with a learn as you go approach to prompting.
 
-More features comming soon, see roadmap.md
+More features comming soon, see the [roadmap](roadmap.md)
 
 ## Getting Started
 

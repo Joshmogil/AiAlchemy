@@ -1,10 +1,7 @@
 from typing import Type, Any
 from pandas import DataFrame
 from pydantic import BaseModel
-
 from ai_alchemy.core.ai import AiWrapper
-
-
 
 def dict_to_pydantic_model(input: dict, ai: AiWrapper, output: BaseModel):
     base_prompt = [

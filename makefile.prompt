@@ -1,0 +1,71 @@
+
+This is the structure of my project:
+.
+├── ai_alchemy
+│   ├── core
+│   │   ├── ai.py
+│   │   ├── cast.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── ai.cpython-310.pyc
+│   │       ├── cast.cpython-310.pyc
+│   │       └── __init__.cpython-310.pyc
+│   ├── __init__.py
+│   └── __pycache__
+│       ├── cast.cpython-310.pyc
+│       ├── core.cpython-310.pyc
+│       ├── __init__.cpython-310.pyc
+│       └── transform.cpython-310.pyc
+├── dist
+│   ├── ai_alchemy-0.1.0-py3-none-any.whl
+│   ├── ai_alchemy-0.1.0.tar.gz
+│   ├── ai_alchemy-0.1.1-py3-none-any.whl
+│   ├── ai_alchemy-0.1.1.tar.gz
+│   ├── ai_alchemy-0.1.2-py3-none-any.whl
+│   ├── ai_alchemy-0.1.2.tar.gz
+│   ├── ai_alchemy-0.1.3-py3-none-any.whl
+│   ├── ai_alchemy-0.1.3.tar.gz
+│   ├── ai_alchemy-0.1.4-py3-none-any.whl
+│   ├── ai_alchemy-0.1.4.tar.gz
+│   ├── ai_alchemy-0.1.5-py3-none-any.whl
+│   ├── ai_alchemy-0.1.5.tar.gz
+│   ├── ai_alchemy-0.1.6-py3-none-any.whl
+│   ├── ai_alchemy-0.1.6.tar.gz
+│   ├── ai_alchemy-0.1.7-py3-none-any.whl
+│   ├── ai_alchemy-0.1.7.tar.gz
+│   ├── ai_alchemy-0.1.8-py3-none-any.whl
+│   ├── ai_alchemy-0.1.8.tar.gz
+│   ├── dataalchemy-0.1.0-py3-none-any.whl
+│   ├── dataalchemy-0.1.0.tar.gz
+│   ├── data_refinery-0.1.0-py3-none-any.whl
+│   ├── datarefinery-0.1.0-py3-none-any.whl
+│   ├── data_refinery-0.1.0.tar.gz
+│   └── datarefinery-0.1.0.tar.gz
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+└── tests
+    ├── core
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   │   ├── __init__.cpython-310.pyc
+    │   │   └── test_cast.cpython-310-pytest-8.2.0.pyc
+    │   └── test_cast.py
+    ├── __init__.py
+    └── __pycache__
+        ├── __init__.cpython-310.pyc
+        ├── test_cast.cpython-310-pytest-8.2.0.pyc
+        ├── test_core.cpython-310-pytest-8.2.0.pyc
+        └── test_transform.cpython-310-pytest-8.2.0.pyc
+
+command 1: dev-init
+- cd ai-alchemy (not ai_alchemy)
+- do the poetry set up
+- install poetry dependencies
+- create a .env file at the top level of the project with OPENAI_API_KEY= in and and tell the user to put their openai api key in there, use green text
+- Tell the user to cd ai-alchemy and run poetry shell to finish set up
+
+command 2: pull-requests-tests
+- cd ai-alchemy (not ai_alchemy)
+- run the tests with pytest
+- run the static type checker with mypy
