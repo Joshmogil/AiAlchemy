@@ -2,6 +2,14 @@
 
 AIAlchemy is a Python library that provides a convenient way to interact with AI models to perform data transformations and validation using the standard library and gold star libraries like Pydantic and Pandas.
 
+It is initially focused on 3 key transformations:
+- String to Pydantic Model
+- Dict to Pydantic Model
+- Pydantic to Pydantic Model
+
+This allows stepwise transformations that can be lego'd together with validation every step of the way, as well as easy integration into existing programs with a learn as you go approach to prompting.
+
+More features comming soon, see roadmap.md
 
 ## Getting Started
 
