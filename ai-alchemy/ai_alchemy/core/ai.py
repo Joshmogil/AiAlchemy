@@ -18,13 +18,10 @@ class OpenAIWrapper(AiWrapper):
     # overriding abstract method
     def __init__(self, api_key: str, model: str = "gpt-3.5-turbo") -> None:
         self.api_key = api_key
-        self.client = OpenAI()
-        self.client.api_key = api_key
         self.model = model
 
     def call(self, input:str) -> Generator[str, None, None]: # type: ignore
-        client = OpenAI()
-        client.api_key = self.api_key
+        client = OpenAI(api_key=self.api_key)
         stream = client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": input}],

@@ -11,7 +11,7 @@ If you would like to contribute to AiAlchemy, here's how you can contribute:
 - Run `make dev-init` from the top level.
 - Make your changes and ensure they align with the theme of the project and are statically typed correctly using mypy.
 - Write unit tests using pytest and ensure your code passes them.
-- Run `make pull-request-tests`.
+- Run `make pr-tests`.
 - Commit your changes and push them to your forked repository.
 - Submit a pull request to the main repository.
 - Your pull request will be reviewed and provide feedback if necessary.

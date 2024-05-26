@@ -3,55 +3,64 @@ from pandas import DataFrame
 from pydantic import BaseModel
 from ai_alchemy.core.ai import AiWrapper
 
-def dict_to_pydantic_model(input: dict, ai: AiWrapper, output: BaseModel):
+def dict_to_pydantic_model(input: dict, ai: AiWrapper, output: BaseModel, additional_context:str="", debug: bool = False, strict: bool = True):
     base_prompt = [
-        "Given the following Pydantic schema and input dictionary, your task is to transform the dictionary into a JSON object. The JSON object should match the Pydantic schema exactly, and should not include the schema itself.",
+        "Given the following Pydantic schema and input dictionary, transform the dictionary into a JSON object. The JSON object should match the Pydantic schema exactly, and should not include the schema itself.",
         "Pydantic schema:",
         f"{output.model_json_schema()}",
+        f"Possibly some Additional Context: <{additional_context}>",
         "Input dictionary:",
         f"{input}",
-        "Please provide the transformed JSON object."
+        "Please provide only the transformed JSON object."
     ]
         
     joined_prompt="\n".join(base_prompt)
     final=""
     for out in ai.call("\n".join(joined_prompt)):
         final = final + out
-    r_val = output.model_validate_json(final)
+    if debug:
+        print(final)
+    r_val = output.model_validate_json(json_data=final, strict=strict)
     return r_val
 
-def str_to_pydantic_model(input: str, ai: AiWrapper, output: BaseModel):
+def str_to_pydantic_model(input: str, ai: AiWrapper, output: BaseModel, additional_context:str="", debug: bool =False, strict: bool = True):
     base_prompt = [
-        "Given the following Pydantic schema and input string, your task is to transform the string into a JSON object. The JSON object should match the Pydantic schema exactly, and should not include the schema itself.",
+        "Given the following Pydantic schema and input string, transform the string into a JSON object. The JSON object must match the Pydantic schema exactly, and should not include the schema itself.",
         "Pydantic schema:",
         f"{output.model_json_schema()}",
+        f"Possibly some Additional Context: <{additional_context}>",
         "Input string:",
         f"{input}",
-        "Please provide the transformed JSON object."
+        "Please provide the only transformed JSON object."
     ]
         
     joined_prompt="\n".join(base_prompt)
     final=""
     for out in ai.call("\n".join(joined_prompt)):
         final = final + out
-    r_val = output.model_validate_json(final)
+    if debug:
+        print(final)
+    r_val = output.model_validate_json(json_data=final, strict=strict)
     return r_val
 
-def pydantic_model_to_pydantic_model(input: BaseModel, ai: AiWrapper, output: BaseModel):
+def pydantic_model_to_pydantic_model(input: BaseModel, ai: AiWrapper, output: BaseModel,  additional_context:str="", debug: bool =False, strict: bool = True):
     base_prompt = [
-        "Given the following Input data and Output Pydantic schema, your task is to transform the Input data a into a JSON object that should match the Pydantic schema exactly, and should not include the schema itself.",
+        "Given the following Input data and Output Pydantic schema, transform the Input data a into a JSON object that matches the Pydantic schema exactly, and should not include the schema itself.",
         "Pydantic schema:",
         f"{output.model_json_schema()}",
+        f"Possibly some Additional Context: <{additional_context}>",
         "Input data:",
         f"{input.model_dump_json()}",
-        "Please provide the transformed JSON object."
+        "Please provide only the transformed JSON object."
     ]
         
     joined_prompt="\n".join(base_prompt)
     final=""
     for out in ai.call("\n".join(joined_prompt)):
         final = final + out
-    r_val = output.model_validate_json(final)
+    if debug:
+        print(final)
+    r_val = output.model_validate_json(json_data=final, strict=strict)
     return r_val
 
 def _pydantic_model_to_dataframe(input: BaseModel, ai: AiWrapper, output: DataFrame):

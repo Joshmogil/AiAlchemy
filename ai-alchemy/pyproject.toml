@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "ai-alchemy"
-version = "0.1.8"
+version = "0.1.12"
 description = "Lightweight package for arbitrary data transformation and validation using AI models and first class python libraries like Pandas and Pydantic."
 authors = ["Josh Mogil"]
 readme = "README.md"
+include = ["ai_alchemy/py.typed", "ai_alchemy/core/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.10"

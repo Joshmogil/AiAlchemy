@@ -65,7 +65,7 @@ command 1: dev-init
 - create a .env file at the top level of the project with OPENAI_API_KEY= in and and tell the user to put their openai api key in there, use green text
 - Tell the user to cd ai-alchemy and run poetry shell to finish set up
 
-command 2: pull-requests-tests
+command 2: pr-tests
 - cd ai-alchemy (not ai_alchemy)
 - run the tests with pytest
 - run the static type checker with mypy
