@@ -1,5 +1,3 @@
-# Python program showing
-# abstract base class work
 from abc import ABC, abstractmethod
 from openai import OpenAI
 from typing import Generator
@@ -21,12 +19,13 @@ class OpenAIWrapper(AiWrapper):
         self.api_key = api_key
         self.client = OpenAI()
         self.client.api_key = api_key
+        self.model = "gpt-3.5-turbo"
 
-    def call(self, input:str, model: str = "gpt-3.5-turbo") -> Generator[str, None, None]: # type: ignore
+    def call(self, input:str) -> Generator[str, None, None]: # type: ignore
         client = OpenAI()
         client.api_key = self.api_key
         stream = client.chat.completions.create(
-            model=model,
+            model=self.model,
             messages=[{"role": "user", "content": input}],
             stream=True,
         )
@@ -35,12 +34,3 @@ class OpenAIWrapper(AiWrapper):
                 yield chunk.choices[0].delta.content
 
 
-class Anthropic(AiWrapper):
-    # overriding abstract method
-    def call(self): # type: ignore
-        print("I have 5 sides")
-
-class call(AiWrapper):
-    # overriding abstract method
-    def noofsides(self): # type: ignore
-        print("I have 5 sides")

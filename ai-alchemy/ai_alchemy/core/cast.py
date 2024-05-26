@@ -1,4 +1,4 @@
-from typing import Type, Callable, Any
+from typing import Type, Any
 from pandas import DataFrame
 from pydantic import BaseModel
 
@@ -19,32 +19,50 @@ def dict_to_pydantic_model(input: dict, ai: AiWrapper, output: BaseModel):
     joined_prompt="\n".join(base_prompt)
     final=""
     for out in ai.call("\n".join(joined_prompt)):
-        print(out)
         final = final + out
-    print(final)
     r_val = output.model_validate_json(final)
     return r_val
 
 def str_to_pydantic_model(input: str, ai: AiWrapper, output: BaseModel):
-    prompt=[
-        "You are a data scientist working on a project that requires you to convert data from one format to another.",
-        "The input is the key-value dictionary:",
+    base_prompt = [
+        "Given the following Pydantic schema and input string, your task is to transform the string into a JSON object. The JSON object should match the Pydantic schema exactly, and should not include the schema itself.",
+        "Pydantic schema:",
+        f"{output.model_json_schema()}",
+        "Input string:",
         f"{input}",
-        "It needs to be converted to a json object that matches the following Pydantic model:",
-        f"{output.model_json_schema()}" 
-        ]
-    r_val = output.model_validate_json(ai.call("\n".join(prompt)))
+        "Please provide the transformed JSON object."
+    ]
+        
+    joined_prompt="\n".join(base_prompt)
+    final=""
+    for out in ai.call("\n".join(joined_prompt)):
+        final = final + out
+    r_val = output.model_validate_json(final)
     return r_val
 
 def pydantic_model_to_pydantic_model(input: BaseModel, ai: AiWrapper, output: BaseModel):
+    base_prompt = [
+        "Given the following Input data and Output Pydantic schema, your task is to transform the Input data a into a JSON object that should match the Pydantic schema exactly, and should not include the schema itself.",
+        "Pydantic schema:",
+        f"{output.model_json_schema()}",
+        "Input data:",
+        f"{input.model_dump_json()}",
+        "Please provide the transformed JSON object."
+    ]
+        
+    joined_prompt="\n".join(base_prompt)
+    final=""
+    for out in ai.call("\n".join(joined_prompt)):
+        final = final + out
+    r_val = output.model_validate_json(final)
+    return r_val
+
+def _pydantic_model_to_dataframe(input: BaseModel, ai: AiWrapper, output: DataFrame):
     pass
 
-def pydantic_model_to_dataframe(input: BaseModel, ai: AiWrapper, output: DataFrame):
-    pass
 
 
-
-def magic(input_data: Any, output_type: Type) -> Any:
+def _magic(input_data: Any, output_type: Type) -> Any:
     transformation_function = _get_specific_transformation_function(input_data, output_type)
 
 
