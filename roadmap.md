@@ -11,15 +11,15 @@ This document outlines the roadmap for our project, detailing the planned featur
 - [License](#license)
 
 ## Features
-# Standard Transformations -> release 1
+### Standard Transformations -> release 1
 - str -> pydantic model
 - dict -> pydantic model
 - pydantic model -> pydantic model
 
-# Transformation Contexts -> release 2
+### Transformation Contexts -> release 2
 - Allow context to be provided for a transformation
 
-# DSPY for Transformation Prompts -> release 3
+### DSPY for Transformation Prompts -> release 3
 - Optimize prompts for transformations
 
 ## Milestones
