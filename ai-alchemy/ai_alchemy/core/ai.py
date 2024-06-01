@@ -6,7 +6,7 @@ from typing import Any
 from dataclasses import dataclass
 
 @dataclass
-class StructuredTransformationRequest:
+class TransformationRequest:
     """
     base_prompt = [
         "Given the following Pydantic schema and input dictionary, your task is to transform the dictionary into a JSON object that matches the Pydantic schema exactly. The transformed JSON object should not include the schema itself.",
