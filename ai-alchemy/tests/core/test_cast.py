@@ -43,13 +43,13 @@ def test_get_specific_transformation_function(pydantic_model_instance, pydantic_
 
 def test_dict_to_pydantic_model(pydantic_model, openaiwrapper):
     data = {"full_name": "John", "user_age": 25, "height":"5'10", "weight": 150}
-    model = cast.dict_to_pydantic_model(data, openaiwrapper,pydantic_model)
+    model = cast.dict_to_pydantic_model(data, openaiwrapper,pydantic_model, debug=True)
     assert model.name == "John"
     assert model.age == 25
 
 def test_str_to_pydantic_model(pydantic_model, openaiwrapper):
     data = "John Smith is 25 years old, five foot ten inches tall, and weighs 150 pounds."
-    model = cast.str_to_pydantic_model(data, openaiwrapper,pydantic_model)
+    model = cast.str_to_pydantic_model(data, openaiwrapper,pydantic_model, debug=True)
     assert model.name == "John Smith"
     assert model.age == 25
 
@@ -58,6 +58,6 @@ def test_pydantic_model_to_pydantic_model(pydantic_model, openaiwrapper):
         full_name: str
         user_age: int
     data = PydanticModelTest(full_name="John", user_age=25)
-    model = cast.pydantic_model_to_pydantic_model(data, openaiwrapper,pydantic_model)
+    model = cast.pydantic_model_to_pydantic_model(data, openaiwrapper,pydantic_model, debug=True)
     assert model.name == "John"
     assert model.age == 25
