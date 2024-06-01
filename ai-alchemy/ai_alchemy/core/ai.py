@@ -21,13 +21,13 @@ class TransformationRequest:
     
     base_prompt.append("Please provide the transformed JSON object.")
     """
-    top_instruction: str
+    instruction: str
     output_schema_type: str
     output_schema: str
     input_data_type: str
     input: str
     additional_context: str
-    bottom_instruction: str
+    final_instruction: str
 
     def __str__(self):
         base_prompt = [
