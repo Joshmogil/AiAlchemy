@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ai-alchemy"
-version = "0.1.12"
+version = "1.0.1"
 description = "Lightweight package for arbitrary data transformation and validation using AI models and first class python libraries like Pandas and Pydantic."
 authors = ["Josh Mogil"]
 readme = "README.md"
@@ -9,7 +9,6 @@ include = ["ai_alchemy/py.typed", "ai_alchemy/core/py.typed"]
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "^2.31.0"
-pandas = "^2.2.2"
 pydantic = "^2.7.1"
 openai = "^1.30.1"
 pandas-stubs = "^2.2.2.240514"
@@ -24,3 +23,7 @@ mypy = "^1.10.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+log_cli = true
+log_level = "DEBUG"

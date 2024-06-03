@@ -10,21 +10,21 @@ This document outlines the roadmap for our project.
 - [License](#license)
 
 ## Features
-### Standard Transformations -> minor release 2
+### Standard Transformations -> minor release 2 ✅
 - str -> pydantic model
 - dict -> pydantic model
 - pydantic model -> pydantic model
 
-### Transformation Contexts -> minor release 3
+### Transformation Contexts -> minor release 3 ✅
 - Allow context to be provided for a transformation
 - Allow one to many, many to many, many to one transformations
 
-### DSPY for Transformation Prompts -> major release 1
+### SmartAiWrapper -> major release 1 ✅
 - Optimize prompts for transformations
-- Add prompt router for different models to different optimized prompts
+- Add agent-like AiWrapper (SmartAiWrapper) that optimizes prompts and learns from marshalling-validation errors
 
 ## Timeline
-- First Release: May 30th 2024
+- First Release: June 2nd 2024
 - Continuing Updates As Needed
 
 ## Contributing

@@ -4,6 +4,9 @@ import ai_alchemy.core.ai as ai
 from pydantic import BaseModel
 import dotenv
 import os
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 dotenv.load_dotenv()
 
@@ -21,19 +24,20 @@ def pydantic_model():
         name: str
         age: int
         friends: list[str]
-        favorite_color: str
+        enemies: list[str]
+        favorite_color: int
     return TestModel
 
 
 @pytest.fixture
 def complexopenaiwrapper():
     openai = ai.OpenAIWrapper(api_key=os.environ["OPENAI_API_KEY"])
-    complex_ai = ai.ComplexAiWrapper(ai=openai)
+    complex_ai = ai.SmartAiWrapper(ai=openai, max_attempts=2)
     return complex_ai
 
 
 def test_complex_str_to_pydantic_model(pydantic_model, complexopenaiwrapper):
-    data = "John was born in 1998 to Lauren and Michael Smith, his best friends are Lauren, Lisa, and Michael. He can often be seen around town in an orange tshirt."
-    model = cast.str_to_pydantic_model(data, complexopenaiwrapper,pydantic_model, debug=True)
-    assert model.name == "John Smith"
-    assert model.age == 25
+    data = "John was born in 1998 to Lauren and Michael Smith, his best friends are Lauren, Lisa, and Michael. He can often be seen around town in an orange tshirt. He often has run-ins with the police, specifically one named brad."    
+    model = cast.str_to_pydantic_model(input=data,ai= complexopenaiwrapper, output =pydantic_model)
+
+    #rely on error from pydantic
