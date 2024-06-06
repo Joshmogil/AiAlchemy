@@ -23,6 +23,14 @@ This document outlines the roadmap for our project.
 - Optimize prompts for transformations
 - Add agent-like AiWrapper (SmartAiWrapper) that optimizes prompts and learns from marshalling-validation errors
 
+### More Magic -> 1.0.2
+- str_to_dict
+- str_to_str
+- magic function
+ - convert Any to Any
+
+### Async support -> version 1.0.3
+
 ## Timeline
 - First Release: June 2nd 2024
 - Continuing Updates As Needed
