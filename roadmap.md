@@ -9,7 +9,7 @@ This document outlines the roadmap for our project.
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
+## Planned Features
 ### Standard Transformations -> minor release 2 ✅
 - str -> pydantic model
 - dict -> pydantic model
@@ -27,9 +27,13 @@ This document outlines the roadmap for our project.
 - str_to_dict
 - str_to_str
 - magic function
- - convert Any to Any
+ - converts Any to Any
 
 ### Async support -> version 1.0.3
+
+## Tentative Features
+- audio support?
+- visual support?
 
 ## Timeline
 - First Release: June 2nd 2024
