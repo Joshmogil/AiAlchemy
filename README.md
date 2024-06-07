@@ -9,6 +9,8 @@ It is initially focused on 3 key transformations:
 
 This allows stepwise transformations that can be lego'd together with validation every step of the way, as well as easy integration into existing programs with a learn as you go approach to prompting.
 
+
+
 More features comming soon, see the [roadmap](roadmap.md)
 
 ## Getting Started
@@ -54,3 +56,5 @@ model = ai_alchemy.cast.str_to_pydantic_model(data, openai, User)
 
 # Now `model` is a `User` instance with `name` and `age` populated from `data`
 ```
+
+For more inspiration see [examples](https://github.com/Joshmogil/AiAlchemy/tree/main/examples)
